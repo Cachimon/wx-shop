@@ -1,0 +1,66 @@
+/* pages/shopcart/shopcart.wxss */
+.cart-list{
+  height: 250rpx;
+  display: flex;
+  box-shadow: 0 2rpx 2rpx rgba(0,0,0,0.3);
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.cart-list>.radio{
+    margin-right: 30rpx;
+    margin-top: 86rpx;
+    flex: 0 0 38rpx;
+  }
+.cart-list-detail{
+    display: flex;
+    justify-content: space-around;
+  }
+    .item-img{
+      height: 220rpx;
+      width: 160rpx;
+      border-radius: 1rem;
+      flex:0 0 160rpx;
+    }
+    .cart-list-desc{
+      font-size: 28rpx;
+      padding-left: 30rpx;
+      box-sizing: border-box;
+      position: relative;
+    }
+      .cart-list-desc>text{
+        display: block;
+  height: 70rpx;
+        line-height: 28rpx;
+        overflow: hidden;
+      }
+      .cart-info{
+        position: absolute;
+        bottom: 10rpx;
+        padding-right: 40rpx;
+        width: 100%;
+        left: 0;
+        padding: 0 30rpx;
+        box-sizing: border-box;
+      }
+      .cart-list-amount{
+        position: absolute;
+        right: 0;
+
+      }
+  
+.radio {
+  display: inline-block;
+  height: 38rpx;
+  width: 38rpx;
+  border-radius: 50%;
+  background: #fff;
+  border: 5rpx solid #ff5777;
+  box-sizing: border-box;
+  
+ 
+}
+.radio.check{
+    border: none;
+    background: url("../../assets/img/check.png");
+    background-size: 100% 100%;
+  }

@@ -1,0 +1,13 @@
+<!--pages/shopcart/shopcart.wxml-->
+<view wx:for="{{cartList}}" wx:key="{{item.id}}" class="cart-list">
+        <image class="radio {{item.chosen?'check':'' }}" data-goods="item" bind:tap="choseItem"></image>
+        <view class="cart-list-detail">
+  <image class="item-img" src="{{item.img}}"></image></view>
+          <view class="cart-list-desc">
+            <text class="cart-list-title">{{item.title}}</text>
+            <view class="cart-info">
+              <text class="cart-list-price">{{item.price}}</text>
+              <text class="cart-list-amount">x {{item.amount}}</text>
+            </view>
+          </view>
+</view>

@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="container" >
+  <swiper autoplay="true" interval='2000' indicator-dots="true" circular>
+    <swiper-item wx:for="{{banner}}" wx:key="{{index}}">
+      <image src="{{item.image}}"></image>
+    </swiper-item>
+  </swiper>
+  <view class="recommend">
+    <view wx:for="{{recommend}}" wx:key="{{index}}" >
+      <image src="{{item.image}}"></image>
+      <text>{{item.title}}</text>
+    </view>
+  </view>
+  <hr></hr>
+  <view class="feature">
+    <text>本周流行</text>
+    <image src="/image/feature_bg.jpg"></image>
+  </view>
+  <view class="goods-view">
+    <goods class="goods-view" bind:cart="addcart"></goods>
+  </view>
+</view>

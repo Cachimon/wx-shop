@@ -1,0 +1,14 @@
+<!--pages/profile/profile.wxml-->
+<view>
+<view class="head-container" wx:if="{{!hasUserInfo || !canIUse}}">
+<image src="/image/default.png" class="picture"></image>
+
+  <button open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">登录 </button>
+</view>
+<view class="head-container" wx:else>
+<image src="{{userInfo.avatarUrl}}" class="picture"></image>
+  <view class="head-right" >
+  <text >你好，{{userInfo.nickName}}</text>
+</view>
+</view>
+</view>

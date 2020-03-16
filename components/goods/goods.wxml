@@ -1,0 +1,17 @@
+<!--components/goods/goods.wxml-->
+<view class="tab-control">
+  <view wx:for="{{tabs}}" wx:key="{{index}}" data-index="{{index}}"
+      bindtap="tabClick"  class="tab-control-item {{index == currentIndex?'tab-active':''}}">
+      <text>{{item}}</text>
+    </view>
+</view>
+<view class="goods">
+    <view wx:for="{{activeGoodsList}}" wx:key="{{index}}" class="goods-item">
+        <image src="{{item.img}}" alt="" class="goods-image" bindload="imageLoad"></image>
+        <view class="goods-title">{{item.title}}</view>
+        <text class="goods-price">{{item.price}}</text>
+        <image class="fav-icon" src="/image/fav_icon.png" ></image>
+        <text>{{item.fav}}</text>
+        <image class="add" data-goods="{{item}}" bindtap="addCart" src="/image/add.png"></image>
+    </view>
+  </view>

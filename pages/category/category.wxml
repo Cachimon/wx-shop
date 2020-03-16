@@ -1,0 +1,17 @@
+<!--pages/category/category.wxml-->
+<view>
+  <view class="cate-aside">
+    <ul>
+      <li wx:for="{{cateTitle}}" wx:key="{{index}}" style="height:{{height}}rpx; line-height:{{height}}rpx" bindtap="cateChange" data-index="{{index}}" class="{{index === currentCate ? 'active': ''}}">{{item}}</li>
+    </ul>
+  </view>
+  <view class="cate-main">
+  <view class="cate-list">
+    <view wx:for="{{cateList[currentCate]}}" wx:key="{{item.id}}">
+      <image src="{{imgadd + item.img}}" class="cate-img"></image>
+      <text class="cate-txt">{{item.title}}</text>
+    </view>
+  </view>
+
+  </view>
+</view>
