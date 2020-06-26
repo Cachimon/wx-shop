@@ -24,12 +24,46 @@ Page({
     cateList:{},
     height: 0,
     currentCate: "pop",
-    imgadd: "http://www.cachimon.top/mogujie/"
+    imgadd: "http://www.cachimon.top/mogujie/",
+    favoriteList: []
   },
   cateChange(i) {
     this.setData({
       currentCate: i.currentTarget.dataset.index
     })
+  },
+  addfavorite(e) {
+    let i = false
+    this.data.favoriteList.forEach((item, index) => {
+      if (item.id === e.detail.goods.id) {
+        i = index
+      }
+    })
+
+    if (i !== false) {
+      let temp = this.data.favoriteList
+      temp[i].amount += 1
+      this.setData({
+        favoriteList: temp
+      })
+    } else {
+      let index = this.data.favoriteList.length
+      let newfavorite = 'favoriteList[' + index + ']'
+      let goods = e.detail.goods
+      this.setData({
+        [newfavorite]: goods,
+      })
+    }
+
+
+    wx.showToast({
+      title: '已添加收藏',
+      icon: 'none',
+      duration: 2000,
+      //mask: true
+    })
+
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -72,14 +106,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      favoriteList: wx.getStorageSync('newfavorite') || []
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
+  onHide() {
+    console.log("hide")
+    wx.setStorageSync("newfavorite", this.data.favoriteList)
   },
 
   /**

@@ -1,15 +1,14 @@
-{
+﻿{
   "pages": [
-    "pages/shopcart/shopcart",
-    
     "pages/index/index",
     "pages/category/category",
+    "pages/shopcart/shopcart",
     "pages/profile/profile"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ff8198",
-    "navigationBarTitleText": "商城",
+    "navigationBarTitleText": "首页",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true,
     "onReachBottomDistance": 50
@@ -31,7 +30,7 @@
       ,
       {
         "pagePath": "pages/shopcart/shopcart",
-        "text": "购物车",
+        "text": "收藏夹",
         "iconPath": "image/cart.png",
         "selectedIconPath": "image/cart_active.png"
       }

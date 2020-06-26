@@ -7,11 +7,13 @@
 </view>
 <view class="goods">
     <view wx:for="{{activeGoodsList}}" wx:key="{{index}}" class="goods-item">
-        <image src="{{item.img}}" alt="" class="goods-image" bindload="imageLoad"></image>
+        <view class="img-container">
+          <image src="{{item.img}}" alt="" class="goods-image" bindload="imageLoad"></image>
+        </view>
         <view class="goods-title">{{item.title}}</view>
         <text class="goods-price">{{item.price}}</text>
         <image class="fav-icon" src="/image/fav_icon.png" ></image>
-        <text>{{item.fav}}</text>
-        <image class="add" data-goods="{{item}}" bindtap="addCart" src="/image/add.png"></image>
+        <text class="goods-fav">{{item.fav}}</text>
+        <image class="add" data-goods="{{item}}" bindtap="addfavorite" src="/image/add.png"></image>
     </view>
   </view>

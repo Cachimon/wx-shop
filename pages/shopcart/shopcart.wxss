@@ -1,39 +1,42 @@
-/* pages/shopcart/shopcart.wxss */
-.cart-list{
+/* pages/shopfavorite/shopfavorite.wxss */
+.main {
+  padding-bottom: 2.6rpx;
+}
+.favorite-list{
   height: 250rpx;
   display: flex;
   box-shadow: 0 2rpx 2rpx rgba(0,0,0,0.3);
   padding: 20rpx;
   box-sizing: border-box;
 }
-.cart-list>.radio{
+.favorite-list>.radio{
     margin-right: 30rpx;
     margin-top: 86rpx;
     flex: 0 0 38rpx;
   }
-.cart-list-detail{
+.favorite-list-detail{
     display: flex;
     justify-content: space-around;
   }
     .item-img{
       height: 220rpx;
       width: 160rpx;
-      border-radius: 1rem;
+      border-radius: 1rpx;
       flex:0 0 160rpx;
     }
-    .cart-list-desc{
+    .favorite-list-desc{
       font-size: 28rpx;
       padding-left: 30rpx;
       box-sizing: border-box;
       position: relative;
     }
-      .cart-list-desc>text{
+      .favorite-list-desc>text{
         display: block;
   height: 70rpx;
         line-height: 28rpx;
         overflow: hidden;
       }
-      .cart-info{
+      .favorite-info{
         position: absolute;
         bottom: 10rpx;
         padding-right: 40rpx;
@@ -42,7 +45,7 @@
         padding: 0 30rpx;
         box-sizing: border-box;
       }
-      .cart-list-amount{
+      .favorite-list-amount{
         position: absolute;
         right: 0;
 
@@ -56,11 +59,48 @@
   background: #fff;
   border: 5rpx solid #ff5777;
   box-sizing: border-box;
-  
- 
 }
 .radio.check{
     border: none;
-    background: url("../../assets/img/check.png");
+    background: url("http://www.cachimon.top/mogujie/image/check.png");
     background-size: 100% 100%;
   }
+  .bottom {
+    height: 80rpx;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    border-top: 1rpx solid rgba(225, 225, 225,1);
+   display: flex;
+   justify-content: space-between;
+   line-height: 82rpx;
+   font-size: 25rpx;
+  }
+.bottom  .radio{
+  position: absolute;
+  top: 50%;
+  left: 15rpx;
+  transform: translateY(-50%);
+}
+.bottom-left text {
+  margin-left: 70rpx;
+}
+.bottom-right {
+  display: flex;
+  justify-content: flex-end;
+  line-height: 80rpx;
+  margin-right: 15rpx;
+}
+.bottom-right .button {
+  height: 50rpx;
+  line-height: 50rpx;
+  margin-top: 15rpx;
+  margin-left: 20rpx;
+  padding: 0 30rpx;
+  color: #fff;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  letter-spacing: 5rpx;
+  background-color: #ff5777;
+}

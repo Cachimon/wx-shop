@@ -12,7 +12,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    type: ["pop", "news", "sell"],
+    type: ["pop", "new", "sell"],
     goodsList: {},
     activeGoodsList:[],
     activeGoodsType: "pop",
@@ -24,29 +24,53 @@ Component({
     created(){
     },
     attached(){
-      this.data.type.forEach(type => {
-        let goodsType = "goodsList." + type
-        wx.request({
-          url: 'http://www.cachimon.top/mogujie/' + type + '.json',
-          method: "GET",
-          success: (res) => {
-            let result = res.data.data
-            result.forEach(item => {
-              item.id = this.data.goodsId++
-              item.chosen=false
-              item.amount = 1
-            })
-            this.setData({
-              [goodsType]: result
-            })
-            if(type === this.data.activeGoodsType){
-              this.setData({
-                activeGoodsList: result
-              })
-            }
-          }
-        })
-      })
+     new Promise((resolve, reject) => {
+       setTimeout(() => {
+         let allGoods = wx.getStorageSync('allGoods')
+         console.log(allGoods)
+         this.setData({
+           goodsList: allGoods,
+           activeGoodsList: allGoods[this.data.activeGoodsType]
+         })
+         resolve()
+       }, 1000)
+     }).then(() => {
+       this.data.type.forEach(t => {
+         if (this.data.goodsList[t].length === 0) {
+           setTimeout(() => {
+             let allGoods = wx.getStorageSync('allGoods')
+             this.setData({
+               goodsList: allGoods,
+               activeGoodsList: allGoods[this.data.activeGoodsType]
+             })
+           }, 1000)
+         }
+       })
+     })
+      // this.data.type.forEach(type => {
+      //   let goodsType = "goodsList." + type
+      //   wx.request({
+      //     url: 'http://www.cachimon.top/mogujie/' + type + '.json',
+      //     method: "GET",
+      //     success: (res) => {
+      //       let result = res.data.data
+            
+      //       result.forEach(item => {
+      //         item.id = this.data.goodsId++
+      //         item.chosen=false
+      //         item.amount = 1
+      //       })
+      //       this.setData({
+      //         [goodsType]: result
+      //       })
+      //       if(type === this.data.activeGoodsType){
+      //         this.setData({
+      //           activeGoodsList: result
+      //         })
+      //       }
+      //     }
+      //   })
+      // })
     }
   },
   /**
@@ -64,10 +88,18 @@ Component({
         activeGoodsList: this.data.goodsList[this.data.activeGoodsType]
       })
     },
-    addCart(e){
+    addfavorite(e){
       let goods = e.currentTarget.dataset.goods
       //console.log(goods)
-      this.triggerEvent("cart", {"goods": goods})
+      this.triggerEvent("favorite", {"goods": goods})
     }
+  },
+  getList() {
+    let allGoods = wx.getStorageSync('allGoods')
+    console.log(allGoods)
+    this.setData({
+      goodsList: allGoods,
+      activeGoodsList: allGoods[this.data.activeGoodsType]
+    })
   }
 })

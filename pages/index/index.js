@@ -14,7 +14,9 @@ Page({
     titleHeight: 0,
     banner: [],
     recommend:[],
-    cartList: []
+    favoriteList: [],
+    toastDisplay: 'none',
+    toastAnimation: ''
   },
   //事件处理函数
   bindViewTap: function() {
@@ -64,12 +66,12 @@ Page({
   },
   onShow(){
     this.setData({
-      cartList: []
+      favoriteList: wx.getStorageSync('newfavorite') || []
     })
   },
   onHide(){
     console.log("hide")
-    wx.setStorageSync("newcart", this.data.cartList)
+    wx.setStorageSync("newfavorite", this.data.favoriteList)
   },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
@@ -90,13 +92,37 @@ Page({
       testData: this.data.testData + (this.data.num)
     })
   },
-  addcart(e){
-    let index = this.data.cartList.length
-    let newCart = 'cartList[' + index + ']'
-    let goods = e.detail.goods
-    this.setData({
-      [newCart]: goods
+  addfavorite(e){
+    let i = false
+    this.data.favoriteList.forEach((item, index) => {
+      if (item.id === e.detail.goods.id) {
+        i = index
+      }
     })
-    console.log("已加入购物车")
+
+    if (i !== false) {
+      let temp = this.data.favoriteList
+      temp[i].amount += 1
+      this.setData({
+        favoriteList: temp
+      })
+    } else {
+      let index = this.data.favoriteList.length
+      let newfavorite = 'favoriteList[' + index + ']'
+      let goods = e.detail.goods
+      this.setData({
+        [newfavorite]: goods,
+      })
+    }
+
+
+    wx.showToast({
+      title: '已添加收藏',
+      icon: 'none',
+      duration: 2000,
+      //mask: true
+    })
+
+
   }
 })

@@ -1,13 +1,26 @@
-<!--pages/shopcart/shopcart.wxml-->
-<view wx:for="{{cartList}}" wx:key="{{item.id}}" class="cart-list">
-        <image class="radio {{item.chosen?'check':'' }}" data-goods="item" bind:tap="choseItem"></image>
-        <view class="cart-list-detail">
-  <image class="item-img" src="{{item.img}}"></image></view>
-          <view class="cart-list-desc">
-            <text class="cart-list-title">{{item.title}}</text>
-            <view class="cart-info">
-              <text class="cart-list-price">{{item.price}}</text>
-              <text class="cart-list-amount">x {{item.amount}}</text>
-            </view>
-          </view>
+<!--pages/shopfavorite/shopfavorite.wxml-->
+<view class="main">
+  <view wx:for="{{favoriteList}}" wx:key="{{item.id}}" wx:for-index="idx" class="favorite-list">
+    <image class="radio {{item.chosen?'check':'' }}" data-index="{{idx}}" bind:tap="choseItem"></image>
+    <view class="favorite-list-detail">
+    <image class="item-img" src="{{item.img}}"></image>
+    </view>
+    <view class="favorite-list-desc">
+      <text class="favorite-list-title">{{item.title}}</text>
+      <view class="favorite-info">
+        <text class="favorite-list-price">{{item.price}}</text>
+        <text class="favorite-list-amount">x {{item.amount}}</text>
+      </view>
+    </view>
+    
+  </view>
+  <view class="bottom">
+   <view class="bottom-left">
+   <image class="radio {{allChosen?'check':'' }}"  bind:tap="choseAll"></image>
+   <text>全选</text>
+   </view>
+   <view class="bottom-right">
+    <text>合计：￥{{allAmount}}</text>
+   </view>
+  </view>
 </view>

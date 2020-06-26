@@ -5,7 +5,29 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    
+    let allGoods = {}
+    let types = ["pop", "new", "sell"]
+    let num = 0
+    types.forEach(type => {
+      let goodsType = "goodsList." + type
+      wx.request({
+        url: 'http://www.cachimon.top/mogujie/' + type + '.json',
+        method: "GET",
+        success: (res) => {
+          let result = res.data.data
+
+          result.forEach(item => {
+            item.id = num++
+            item.chosen = false
+            item.amount = 1
+          })
+          allGoods[type] = result
+          wx.setStorageSync('allGoods', allGoods)
+        }
+      })
+    })
+    // this.globalData.allGoods = allGoods
+    // wx.setStorageSync('allGoods', allGoods)
     // 登录
    
     wx.checkSession({
@@ -51,7 +73,8 @@ App({
   globalData: {
     userInfo: null,
     statusBarHeight: 0,
-    titleHeight:0
+    titleHeight:0,
+    allGoods: {}
   },
   request: 10000
 })

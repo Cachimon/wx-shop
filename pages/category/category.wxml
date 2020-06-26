@@ -12,6 +12,8 @@
       <text class="cate-txt">{{item.title}}</text>
     </view>
   </view>
-
+  <view class="goods-view">
+    <goods class="goods-view" bind:cart="addcart"></goods>
+  </view>
   </view>
 </view>

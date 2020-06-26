@@ -17,6 +17,6 @@
     <image src="/image/feature_bg.jpg"></image>
   </view>
   <view class="goods-view">
-    <goods class="goods-view" bind:cart="addcart"></goods>
+    <goods class="goods-view" bind:favorite="addfavorite"></goods>
   </view>
 </view>

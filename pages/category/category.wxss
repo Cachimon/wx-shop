@@ -23,8 +23,11 @@
   border-left: 0.2rem solid #ff5777;
   color: #ff5777;
 }
+.cate-main {
+ padding-left: 170rpx;
+}
 .cate-list{
-  padding-left: 170rpx;
+ margin-bottom: 30rpx;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
